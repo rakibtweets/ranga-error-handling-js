@@ -1,6 +1,7 @@
+// loading api data
 const loadProducts = () => {
   const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR12fGJbHmYg51TxCWHdyaGwIke4JZqwcLPPqU4gM5RTrRoMDqc_jPHrxY0`;
-  
+
   fetch(url)
 
     .then((response) => response.json())
@@ -12,7 +13,7 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-    const image = product.images;
+    // const image = product.images;
     const div = document.createElement("div");
     div.classList.add('product');
     div.innerHTML = `<div class="single-product h-100">
@@ -21,8 +22,12 @@ const showProducts = (products) => {
       </div>
       <h4>${product.title}</h5>
       <p>Category: ${product.category}</p>
-      <p>Rating count: ${product.rating.count}</p>
-      <p>Avg rating: ${product.rating.rate}</p>
+      <p>Rating count:
+      <span class= "fw-bold">${product.rating.count}</span>
+      </p>
+      <p>Avg rating:
+      <span class= "fw-bold">${product.rating.rate}</span> 
+      </p>
       <h4>Price: $ ${product.price}</h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button>
