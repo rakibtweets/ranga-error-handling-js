@@ -18,7 +18,7 @@ const showProducts = (products) => {
     div.classList.add('product');
     div.innerHTML = `
     <div class="single-product card  rounded">
-      <div class= "p-3">
+      <div>
         <img class="product-image" src="${product.image}"></img>
       </div>
       <div class="card-body">
@@ -53,7 +53,6 @@ const showProducts = (products) => {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -130,19 +129,20 @@ const displaySingleProduct = (product) => {
   // console.log(product)
   const modalBody = document.getElementById('modal-body')
   modalBody.innerHTML = `
-  <div class= "p-3">
+  <div>
   <img class="product-image" src="${product.image}"></img>
 </div>
 <div class="card-body">
-  <h5 class="fw-bold fw-bold text-success">${product.title}</h5>
-  <p class="fw-bold text-secondary">Category: ${product.category}</p>
-  <p>
+<h5 class="fw-bold fw-bold text-success">${product.title}</h5>
+<p class="fw-bold text-secondary">Category: ${product.category}</p>
+<p class="fw-bold text-secondary">${product.description.slice(0,100)}</p>
+  <p class="mb-1">
   <span class= "fw-bold text-secondary">${product.rating.count} People rated this product</span>
   </p>
-  <p class="fw-bold text-secondary">Avg rating:
+  <p class="fw-bold text-secondary m-0">Avg rating:
     <span>${product.rating.rate}</span> 
   </p>
-  <h5 class="fw-bold text-danger">Price: $ ${product.price}</h5>
+  <h5 class="fw-bold text-danger m-0">Price: $ ${product.price}</h5>
   
   `;
 };
