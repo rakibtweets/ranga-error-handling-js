@@ -126,7 +126,6 @@ const loadSingleProduct = (productId) => {
 }
 /* Display single product function  */
 const displaySingleProduct = (product) => {
-  // console.log(product)
   const modalBody = document.getElementById('modal-body')
   modalBody.innerHTML = `
   <div>
