@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ranga Store</title>
+    <title>Shopify Store</title>
     <link rel="stylesheet" href="./css/style.css" />
     <!-- Latest compiled and minified CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
     />
 
@@ -25,21 +32,22 @@
 
   <body>
     <header>
-      <h1 class="text-center text-primary fw-bold">Ranga Store</h1>
+      <h1 class="text-center fw-bold mt-3">
+        Welcome to <span class="text-success">Shopify Store</span>
+      </h1>
     </header>
     <main class="main">
-      <div class="search-field mb-5">
-        <div class="search-box">
-          <input id="input-field" class="search-field" type="text" />
-          <button
-            class="btn btn-primary search-button"
-            data-toggle="button"
-            aria-pressed="false"
-            autocomplete="off"
-            id="search-btn"
-            onclick="loadProducts()"
-          >
-            Search
+      <div class="search-field my-5">
+        <div class="search-box w-50 mx-auto d-flex">
+          <input
+            type="text"
+            name=""
+            id="search-field"
+            class="form-control"
+            placeholder="Search for product"
+          />
+          <button class="btn btn-outline-success d-flex justify-content-center align-items-center">
+            <i class="fas fa-search px-1"></i>Search
           </button>
         </div>
       </div>

@@ -12,7 +12,7 @@ body {
   outline: none;
   border: none;
 }
-.search-box {
+/* .search-box {
   border: 1px solid rgb(3, 118, 211);
   width: 281px;
   border-radius: 5px;
@@ -24,7 +24,7 @@ body {
   padding: 10px 50px;
   border-radius: 25px;
   margin-left: 24px;
-}
+} */
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
