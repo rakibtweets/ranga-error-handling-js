@@ -11,6 +11,7 @@ loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
+  /* array mapping method */
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const div = document.createElement("div");
@@ -117,14 +118,14 @@ const updateTotal = () => {
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
-
+/* loading singile product api */
 const loadSingleProduct = (productId) => {
   fetch(`https://fakestoreapi.com/products/${productId}`)
   .then(res=>res.json())
   .then(data=>displaySingleProduct(data))
   
 }
-
+/* Display single product function  */
 const displaySingleProduct = (product) => {
   // console.log(product)
   const modalBody = document.getElementById('modal-body')
