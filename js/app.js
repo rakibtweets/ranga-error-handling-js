@@ -13,7 +13,6 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-    // const image = product.images;
     const div = document.createElement("div");
     div.classList.add('product');
     div.innerHTML = `
@@ -22,8 +21,8 @@ const showProducts = (products) => {
         <img class="product-image" src="${product.image}"></img>
       </div>
       <div class="card-body">
-        <h5 class="fw-bold">${product.title}</h5>
-        <p class="fw-bold">Category: ${product.category}</p>
+        <h5 class="fw-bold text-success">${product.title}</h5>
+        <p class="fw-bold text-secondary">Category: ${product.category}</p>
         <p>
         <span class= "fw-bold text-secondary">${product.rating.count} People rated this product</span>
         </p>
@@ -34,11 +33,32 @@ const showProducts = (products) => {
         
         <div class="card-btn mt-3">
           <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn"  class="buy-now btn btn-outline-success"><i class="fas fa-shopping-cart px-1"></i>add to cart</button>
-          <button id="details-btn" class="btn btn-outline-danger">Details</button>
-         </div>
+          <button onclick="loadSingleProduct(${product.id})" id="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-danger">Details</button>
+        </div>
 
       </div>
     </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id= "modal-body" class="modal-body">
+ 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -96,3 +116,33 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+
+const loadSingleProduct = (productId) => {
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+  .then(res=>res.json())
+  .then(data=>displaySingleProduct(data))
+  
+}
+
+const displaySingleProduct = (product) => {
+  // console.log(product)
+  const modalBody = document.getElementById('modal-body')
+  modalBody.innerHTML = `
+  <div class= "p-3">
+  <img class="product-image" src="${product.image}"></img>
+</div>
+<div class="card-body">
+  <h5 class="fw-bold fw-bold text-success">${product.title}</h5>
+  <p class="fw-bold text-secondary">Category: ${product.category}</p>
+  <p>
+  <span class= "fw-bold text-secondary">${product.rating.count} People rated this product</span>
+  </p>
+  <p class="fw-bold text-secondary">Avg rating:
+    <span>${product.rating.rate}</span> 
+  </p>
+  <h5 class="fw-bold text-danger">Price: $ ${product.price}</h5>
+  
+  `;
+};
+
